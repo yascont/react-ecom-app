@@ -1,13 +1,17 @@
-import React from "react"
-import CardProduct from "../component/CartProduct"
+import React, { useEffect } from "react"
+import ProductCart from "../component/ProductCart";
+import { Link } from "react-router-dom";
 
 function CartPage(){
+
+    const keys = Object.keys(localStorage);
+
     return (
         
         <section className="bg-[#d1d7da] pb-10">
             <section className="ml-[7%] pt-10">
                 <h2 className="bo text-[26px]">Shopping Bag</h2>
-                <p><span className="bo">cacheService.len items</span> in your bag</p>
+                <p><span className="bo">{localStorage.length}</span> in your bag</p>
             </section>
         
             
@@ -18,10 +22,19 @@ function CartPage(){
                     <p className="seb w-[10%]">Quantity</p>
                     <p className="seb w-[10%]">Total Price</p>
                 </div>
-                
-                    <CardProduct />
-        
-                <p className=" mt-8 hover:animate-pulse bg-[#E4901B] h-10 w-36 flex items-center justify-center ml-auto cursor-pointer">CHECKOUT</p>
+                {keys.map(key => {
+                    const value = localStorage.getItem(key);
+                    if (value)
+                    {
+                        return(
+                        <React.Fragment key={key}>
+                            <ProductCart id={key} product={JSON.parse(value)}/>
+                        </React.Fragment>
+                        )
+                    }
+                })}
+                        
+                <Link to="/home"><p className=" mt-8 hover:animate-pulse bg-[#E4901B] h-10 w-36 flex items-center justify-center ml-auto cursor-pointer" onClick={()=>localStorage.clear()}>CHECKOUT</p></Link>
             </section>
         
         </section>

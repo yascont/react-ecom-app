@@ -1,8 +1,6 @@
 import React from "react";
 import CategoryCards from "../component/CategoryCards";
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom/dist/umd/react-router-dom.development";
 function CategoryPage(){
 
 
@@ -14,8 +12,8 @@ function CategoryPage(){
             </section>
 
             <section className="w-full flex flex-col mb-5 items-center justify-center">
-                <h2 className="text-[72px] bo mt-5 mb-5">category</h2>
-                <CategoryCards category={category} page='other' num="200"/>
+                <h2 className="text-[72px] bo mt-5 mb-5">{category}</h2>
+                <CategoryCards category={category} num="200"/>
             </section>
        </>
     )

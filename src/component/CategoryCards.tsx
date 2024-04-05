@@ -18,7 +18,7 @@ interface product {
     price: number;
 
   }
-export default function CategoryCards({category, page, num}){
+export default function CategoryCards({category, num}){
   const [data, setData] = useState<product[] | null>(null);
 
   const fetchData = async () => {
@@ -38,7 +38,7 @@ const fetchCategoryData = async () => {
 }
 
   useEffect(() => {
-    if (page != 'home')
+    if (category != 'home')
       fetchCategoryData()
     else
       fetchData();

@@ -1,7 +1,7 @@
 import React from "react";
 import HomeHead from "../component/HomeHead";
 import CategoryCards from "../component/CategoryCards";
-
+import { Link } from "react-router-dom";
 
 export default function HomePage(){
     return (
@@ -9,8 +9,8 @@ export default function HomePage(){
             <HomeHead/>
 
             <section className="ml-auto flex items-center justify-center gap-10 mt-10 mb-10">
-                <img src="/src/assets/first-slid.png"   className="h-56 hover:animate-pulse cursor-pointer"></img>
-                <img src="/src/assets/second-slid.png"   className="h-56 hover:animate-pulse cursor-pointer"></img>
+                <Link to="/category/men's"><img src="/src/assets/first-slid.png"   className="h-56 hover:animate-pulse cursor-pointer"></img></Link>
+                <Link to="/category/women's"><img src="/src/assets/second-slid.png"   className="h-56 hover:animate-pulse cursor-pointer"></img></Link>
             </section>
 
             <section className="text-center mb-10">
@@ -19,7 +19,7 @@ export default function HomePage(){
             </section>
 
             <section className="mb-16">
-                <CategoryCards page={"home"} num={200}/>
+                <CategoryCards category='home' num={200}/>
             </section>
         </>
     )
